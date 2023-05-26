@@ -80,3 +80,4 @@ C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRis
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

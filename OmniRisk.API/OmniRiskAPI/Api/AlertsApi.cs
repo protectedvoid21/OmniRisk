@@ -13,6 +13,7 @@ public static class AlertsApi {
 
         group.MapGet("/", GetAll);
         group.MapPost("/", Add);
+        group.MapPut("/", Accept);
         
         return group;
     }
@@ -35,7 +36,28 @@ public static class AlertsApi {
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetAlertResponse>>>> GetAll(
         [FromServices] OmniRiskDbContext dbContext, CancellationToken ct) {
         var alertResponses = dbContext.Alerts
-            .Select(x => new GetAlertResponse(x.AuthorId, x.Author.UserName ?? "Deleted", x.Comment)).AsEnumerable();
+            .Where(x => x.IsAccepted)
+            .Select(x => new GetAlertResponse(x.AuthorId, x.Author.UserName ?? "Deleted", x.Comment))
+            .AsEnumerable();
         return TypedResults.Ok(alertResponses);
+    }
+    
+    private static async Task<Results<BadRequest, Ok>> Accept(
+        [FromServices] OmniRiskDbContext dbContext, [AsParameters] AcceptAlertRequest request, CancellationToken ct) {
+        var alert = await dbContext.Alerts.FindAsync(request.AlertId);
+
+        if (alert == null) {
+            return TypedResults.BadRequest();
+        }
+
+        if (request.IsApproved) {
+            alert.IsAccepted = true;
+        }
+        else {
+            dbContext.Remove(alert);
+        }
+        
+        await dbContext.SaveChangesAsync(ct);
+        return TypedResults.Ok();
     }
 }

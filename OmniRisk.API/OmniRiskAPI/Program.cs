@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using OmniRiskAPI.Api;
+using OmniRiskAPI.Authentication;
 using OmniRiskAPI.Persistence;
 using OmniRiskAPI.Setup;
 
@@ -12,12 +12,15 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultDb") ??
                        builder.Configuration.GetConnectionString("Test");
 builder.Services.AddSqlServer<OmniRiskDbContext>(connectionString);
 
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.SeedDatabase();
 
