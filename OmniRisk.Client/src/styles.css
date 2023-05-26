@@ -1,5 +1,5 @@
 .leaflet-container{
-    height: 74.5vh;
+    height: 91.5vh;
 }
 
 .leaflet-control-geosearch form{
@@ -21,8 +21,12 @@
     height: 50px;
 }
 
-.leaflet-control-geosearch form a.reset{
+.leaflet-control-geosearch form .reset{
     font-size: 30px;
+    /* margin-left: 450px; */
+    position: absolute;
+    top:8px;
+    right: 10px;
 }
 
 .leaflet-container.cursor {

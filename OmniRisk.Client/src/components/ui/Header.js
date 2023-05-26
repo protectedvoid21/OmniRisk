@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <AppBar position="static" sx={{ mb: 2 }} open={appStore.openDrawer}>
+      <AppBar position="static" sx={{ mb: 0.1 }} open={appStore.openDrawer}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <HealthAndSafetyIcon
