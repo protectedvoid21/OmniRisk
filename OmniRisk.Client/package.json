@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -13,7 +14,8 @@
     "geolib": "^3.3.3",
     "leaflet": "^1.9.4",
     "leaflet-geosearch": "^3.8.0",
-    "mobx-react-lite": "^3.4.3",
+    "mobx": "^6.6.1",
+    "mobx-react-lite": "^3.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet-cluster": "^2.1.0",
