@@ -11,8 +11,8 @@ public static class AlertsApi {
         var group = routes.MapGroup("Alerts");
         group.WithTags("alerts");
 
-        group.MapGet("/", Add);
         group.MapGet("/", GetAll);
+        group.MapPost("/", Add);
         
         return group;
     }

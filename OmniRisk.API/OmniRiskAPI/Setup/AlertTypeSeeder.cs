@@ -19,6 +19,6 @@ public static class AlertTypeSeeder {
         };
         
         dbContext.AddRange(alertTypes);
-        dbContext.SaveChangesAsync();
+        dbContext.SaveChanges();
     }
 }
