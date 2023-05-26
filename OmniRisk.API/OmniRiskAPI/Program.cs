@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using OmniRiskAPI.Api;
 using OmniRiskAPI.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -20,8 +20,6 @@ if (app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
-app.MapControllers();
+app.RegisterApiEndpoints();
 
 app.Run();
