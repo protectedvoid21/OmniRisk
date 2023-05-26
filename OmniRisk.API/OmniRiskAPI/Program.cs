@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OmniRiskAPI.Api;
 using OmniRiskAPI.Persistence;
+using OmniRiskAPI.Setup;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +19,9 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.SeedDatabase();
 
+app.UseHttpsRedirection();
 app.RegisterApiEndpoints();
 
 app.Run();

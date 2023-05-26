@@ -69,3 +69,14 @@ C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRis
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\OmniRiskAPI.pdb
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\OmniRiskAPI.genruntimeconfig.cache
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\ref\OmniRiskAPI.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Humanizer.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\System.CodeDom.dll

@@ -12,12 +12,13 @@ public static class AlertsApi {
         group.WithTags("alerts");
 
         group.MapGet("/", Add);
+        group.MapGet("/", GetAll);
         
         return group;
     }
 
     private static async Task<Results<BadRequest, Ok<AddAlertRequest>>> Add(
-        [FromServices] OmniRiskDbContext dbContext, AddAlertRequest request, CancellationToken ct) {
+        [FromServices] OmniRiskDbContext dbContext, [FromBody] AddAlertRequest request, CancellationToken ct) {
         var alert = new Alert {
             AlertTypeId = request.AlertTypeId,
             Comment = request.Comment,
@@ -29,5 +30,12 @@ public static class AlertsApi {
         await dbContext.SaveChangesAsync(ct);
 
         return TypedResults.Ok(request);
+    }
+    
+    private static async Task<Results<BadRequest, Ok<IEnumerable<GetAlertResponse>>>> GetAll(
+        [FromServices] OmniRiskDbContext dbContext, CancellationToken ct) {
+        var alertResponses = dbContext.Alerts
+            .Select(x => new GetAlertResponse(x.AuthorId, x.Author.UserName ?? "Deleted", x.Comment)).AsEnumerable();
+        return TypedResults.Ok(alertResponses);
     }
 }
