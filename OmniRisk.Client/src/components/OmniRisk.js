@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import { GlobalStyles } from "@mui/material";
 import Map from "./Map";
 import { observer } from "mobx-react-lite";
+import PersistentDrawerRight from "./ui/PersistentDrawerRight";
 
 const OmniRisk = () => {
   return (
@@ -31,6 +32,7 @@ const OmniRisk = () => {
           <Map />
         </Grid>
       </Grid>
+      <PersistentDrawerRight />
     </>
   );
 };
