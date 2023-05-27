@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OmniRiskAPI.Authorization;
 using OmniRiskAPI.Dtos;
 using OmniRiskAPI.Models;
@@ -24,7 +25,7 @@ public static class EventsApi {
         return group;
     }
 
-    private static async Task<Results<BadRequest, Ok<AddEventRequest>>> Add(
+    private static async Task<Results<BadRequest, Ok<Event>>> Add(
         [FromServices] OmniRiskDbContext dbContext, [FromBody] AddEventRequest request, CancellationToken ct) {
         var @event = new Event {
             EventTypeId = request.EventTypeId,
@@ -40,7 +41,13 @@ public static class EventsApi {
     dbContext.Add(@event);
         await dbContext.SaveChangesAsync(ct);
 
-        return TypedResults.Ok(request);
+        var dbObject = await dbContext.Events
+            .Include(x => x.EventStatus)
+            .Include(x => x.Author)
+            .Include(x => x.EventType)
+            .FirstOrDefaultAsync(x => x.Id == @event.Id);
+
+        return TypedResults.Ok(dbObject);
     }
     
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetEventResponse>>>> GetAll(
