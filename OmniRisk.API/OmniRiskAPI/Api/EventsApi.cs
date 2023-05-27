@@ -64,7 +64,7 @@ public static class EventsApi {
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetEventTypeResponse>>>> GetAllEventsTypes(
        [FromServices] OmniRiskDbContext dbContext, CancellationToken ct)
     {
-        var eventsResponse = dbContext.EventStatus
+        var eventsResponse = dbContext.EventType
             .Select(x => new GetEventTypeResponse(x.Id, x.Name))
             .AsEnumerable();
         return TypedResults.Ok(eventsResponse);
@@ -73,7 +73,7 @@ public static class EventsApi {
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetCrimeTypeResponse>>>> GetAllCrimeTypes(
        [FromServices] OmniRiskDbContext dbContext, CancellationToken ct)
     {
-        var eventsResponse = dbContext.EventStatus
+        var eventsResponse = dbContext.CrimeTypes
             .Select(x => new GetCrimeTypeResponse(x.Id, x.Name))
             .AsEnumerable();
         return TypedResults.Ok(eventsResponse);
