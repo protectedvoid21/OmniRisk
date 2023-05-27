@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj": {}
+    "C:\\Users\\jakub\\Desktop\\Repo\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj": {
+    "C:\\Users\\jakub\\Desktop\\Repo\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
+        "projectUniqueName": "C:\\Users\\jakub\\Desktop\\Repo\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
         "projectName": "OmniRiskAPI",
-        "projectPath": "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
-        "packagesPath": "C:\\Users\\niezn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\obj\\",
+        "projectPath": "C:\\Users\\jakub\\Desktop\\Repo\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
+        "packagesPath": "C:\\Users\\jakub\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jakub\\Desktop\\Repo\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\niezn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jakub\\Desktop\\Repo\\NuGet.Config",
+          "C:\\Users\\jakub\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -49,6 +50,10 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -68,6 +73,12 @@
               "version": "[7.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.5, )"
             },
