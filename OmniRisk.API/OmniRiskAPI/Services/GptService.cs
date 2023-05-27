@@ -16,7 +16,7 @@ namespace OmniRiskAPI.Services
 
             var openAIConfigurations = new OpenAIConfigurations
             {
-                ApiKey = "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",
+                ApiKey = "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",
                 OrganizationId = "org-NKMFPZug424fJBuErzc6OftV"
             };
 
@@ -26,10 +26,14 @@ namespace OmniRiskAPI.Services
             {
                 if (await SendRequest(text.Content, openAIClient))
                 {
-                    answer.Add(text);
+                    text.Rating = "Danger";
+                }
+                else
+                {
+                    text.Rating = "Safe";
                 }
             }
-            return answer;
+            return texts;
         }
 
         private static async Task<bool> SendRequest(string text, OpenAIClient openAIClient)
