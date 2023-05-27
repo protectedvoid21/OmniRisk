@@ -4,7 +4,7 @@ using OmniRiskAPI.Models;
 using OmniRiskAPI.Persistence;
 
 namespace OmniRiskAPI.Setup {
-    public class EventSeeder {
+    public class CryminalSeeder {
         public static async Task Seed(OmniRiskDbContext dbContext, UserManager<AppUser> userManager) {
             var crimeType = new CrimeType { Id = 0, Name = "Pedofilia" };
             using (StreamReader r = new StreamReader("data.json")) {
