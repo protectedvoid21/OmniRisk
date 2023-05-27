@@ -10,6 +10,7 @@ import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
+import EventListItem from "../EventListItem";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -74,7 +75,13 @@ function PersistentDrawerRight() {
         direction="column"
         justifyContent="center"
         alignItems="center"
-      ></Grid>
+      >
+        {appStore.events.map((event) => (
+          <Grid item key={event.id}>
+            <EventListItem event={event} />
+          </Grid>
+        ))}
+      </Grid>
     </Drawer>
   );
 }

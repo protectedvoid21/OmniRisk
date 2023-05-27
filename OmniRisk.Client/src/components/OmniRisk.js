@@ -1,13 +1,38 @@
 import Header from "./ui/Header";
-import React from "react";
+import React, { useEffect } from "react";
 import theme from "./ui/Theme";
 import Grid from "@mui/material/Grid";
 import { GlobalStyles } from "@mui/material";
 import Map from "./Map";
 import { observer } from "mobx-react-lite";
 import PersistentDrawerRight from "./ui/PersistentDrawerRight";
+import axios from "axios";
+import { useStore } from "../stores/store";
+import { getDistanceBetweenTwoPoints } from "../utils";
 
 const OmniRisk = () => {
+  const { appStore } = useStore();
+
+  useEffect(() => {
+    axios.get(`https://localhost:7287/Events`).then((response) => {
+      let events = response.data;
+      events.forEach((event) => {
+        event.distanceFromCurrentLocation = getDistanceBetweenTwoPoints(
+          {
+            latitude: event.latitude,
+            longitude: event.longitude,
+          },
+          {
+            latitude: appStore.currentLocation[0],
+            longitude: appStore.currentLocation[1],
+          }
+        );
+      });
+      console.log(events);
+      appStore.setEvents(events);
+    });
+  }, [appStore]);
+
   return (
     <>
       <Header />

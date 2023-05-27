@@ -18,6 +18,8 @@ import Switch from "@mui/material/Switch";
 import axios from "axios";
 import * as L from "leaflet";
 import { useCallback } from "react";
+import MarkerClusterGroup from "react-leaflet-cluster";
+import dayjs from "dayjs";
 
 const LeafIcon = L.Icon.extend({
   options: {
@@ -30,9 +32,9 @@ const greenIcon = new LeafIcon({
     "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF",
 });
 
-// const defaultIcon = new LeafIcon({
-//   iconUrl: "https://unpkg.com/leaflet@1.9.1/dist/images/marker-icon.png",
-// });
+const defaultIcon = new LeafIcon({
+  iconUrl: "https://unpkg.com/leaflet@1.9.1/dist/images/marker-icon.png",
+});
 
 const DisplayPosition = observer(({ map }) => {
   const { appStore } = useStore();
@@ -40,6 +42,7 @@ const DisplayPosition = observer(({ map }) => {
   const onMove = useCallback(() => {
     let current_coords = map.getCenter();
     appStore.setCoordinates([current_coords.lat, current_coords.lng]);
+    appStore.setEventsDistance([current_coords.lat, current_coords.lng]);
   }, [map, appStore]);
 
   useEffect(() => {
@@ -224,6 +227,32 @@ function Map() {
           </Marker>
         )}
         {appStore.addEventFlag && <AddMarker />}
+        <MarkerClusterGroup chunkedLoading>
+          {appStore.events.map((event, idx) => (
+            <Marker
+              title={event.description}
+              key={`marker-${idx}`}
+              icon={defaultIcon}
+              position={[event.latitude, event.longitude]}
+            >
+              <Popup>
+                <Grid
+                  container
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <span>{event.eventType.name}</span>
+                  <span>{event.description}</span>
+                  <span>
+                    Data zdarzenia:{" "}
+                    {dayjs(event.eventdate).format("MM/DD/YYYY")}
+                  </span>
+                </Grid>
+              </Popup>
+            </Marker>
+          ))}
+        </MarkerClusterGroup>
       </MapContainer>
     </div>
   );

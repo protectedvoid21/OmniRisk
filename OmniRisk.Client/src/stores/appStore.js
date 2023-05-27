@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { getDistanceBetweenTwoPoints } from "../utils";
 
 export default class AppStore {
   openDrawer = false;
@@ -9,10 +10,40 @@ export default class AppStore {
   eventModalOpen = false;
   sateliteView = false;
   addEventFlag = false;
+  events = [];
 
   constructor() {
     makeAutoObservable(this);
   }
+
+  setEvents = (events) => {
+    runInAction(() => {
+      this.events = events;
+    });
+  };
+
+  setEventsDistance = (currentLocation) => {
+    runInAction(() => {
+      let events = this.events;
+      events.forEach((event) => {
+        event.distanceFromCurrentLocation = getDistanceBetweenTwoPoints(
+          {
+            latitude: event.latitude,
+            longitude: event.longitude,
+          },
+          {
+            latitude: currentLocation[0],
+            longitude: currentLocation[1],
+          }
+        );
+      });
+      events.sort(
+        (a, b) =>
+          parseInt(a.distanceFromCurrentLocation) -
+          parseInt(b.distanceFromCurrentLocation)
+      );
+    });
+  };
 
   setAddEventFlag = (flag) => {
     runInAction(() => {
