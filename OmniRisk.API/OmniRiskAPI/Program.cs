@@ -1,8 +1,10 @@
+
 using Microsoft.AspNetCore.Identity;
 using OmniRiskAPI.Api;
 using OmniRiskAPI.Authentication;
 using OmniRiskAPI.Authorization;
 using OmniRiskAPI.Persistence;
+using OmniRiskAPI.Services;
 using OmniRiskAPI.Setup;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -49,6 +51,10 @@ builder.Services.Configure<IdentityOptions>(options => {
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
 });
+
+
+builder.Services.AddScoped<TwitterService, TwitterService>();
+builder.Services.AddScoped<GptService, GptService>();
 
 var app = builder.Build();
 
