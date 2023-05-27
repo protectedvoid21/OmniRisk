@@ -15,6 +15,7 @@ namespace OmniRiskAPI.Setup {
 
             var cryminalists = new List<Cryminalist>();
             for (int i = 0; i < 50; i++) {
+                persons[i].Id = 0;
                 cryminalists.Add(new Cryminalist { Person = persons[i], CrimeType = crimeType });
             }
 
