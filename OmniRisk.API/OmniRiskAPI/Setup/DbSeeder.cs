@@ -1,4 +1,3 @@
-using OmniRiskAPI.Models;
 using OmniRiskAPI.Persistence;
 
 namespace OmniRiskAPI.Setup; 

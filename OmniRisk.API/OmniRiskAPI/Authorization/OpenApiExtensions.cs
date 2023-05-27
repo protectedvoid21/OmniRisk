@@ -9,7 +9,7 @@ public static class OpenApiExtensions {
             Type = SecuritySchemeType.Http,
             Name = JwtBearerDefaults.AuthenticationScheme,
             Scheme = JwtBearerDefaults.AuthenticationScheme,
-            Reference = new() {
+            Reference = new OpenApiReference {
                 Type = ReferenceType.SecurityScheme,
                 Id = JwtBearerDefaults.AuthenticationScheme
             }
