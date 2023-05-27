@@ -31,6 +31,16 @@ builder.Services.AddTokenService();
 var connectionString = builder.Configuration.GetConnectionString("DefaultDb") ??
                        builder.Configuration.GetConnectionString("Test");
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("*");
+                      });
+});
+
+
 builder.Services.AddSqlServer<OmniRiskDbContext>(connectionString);
 builder.Services.AddCurrentUser();
 
