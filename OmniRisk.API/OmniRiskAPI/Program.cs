@@ -11,15 +11,7 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options => {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy => {
-            policy
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-        });
-});
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -31,16 +23,6 @@ builder.Services.AddTokenService();
 var connectionString = builder.Configuration.GetConnectionString("DefaultDb") ??
                        builder.Configuration.GetConnectionString("Test");
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("*");
-                      });
-});
-
-
 builder.Services.AddSqlServer<OmniRiskDbContext>(connectionString);
 builder.Services.AddCurrentUser();
 
@@ -50,6 +32,17 @@ builder.Services.AddCurrentUser();
 
 builder.Services.AddScoped<TwitterService, TwitterService>();
 builder.Services.AddScoped<GptService, GptService>();
+
+builder.Services.AddCors(options => {
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy => {
+            policy
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 
 var app = builder.Build();
 
