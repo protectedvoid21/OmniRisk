@@ -81,6 +81,9 @@ C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRis
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+<<<<<<< HEAD
+C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\MiniValidation.dll
+=======
 C:\Users\jakub\Desktop\Repo\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\jakub\Desktop\Repo\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\appsettings.json
 C:\Users\jakub\Desktop\Repo\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\OmniRiskAPI.exe
@@ -164,3 +167,4 @@ C:\Users\jakub\Desktop\Repo\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\r
 C:\Users\jakub\Desktop\Repo\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\OmniRiskAPI.pdb
 C:\Users\jakub\Desktop\Repo\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\OmniRiskAPI.genruntimeconfig.cache
 C:\Users\jakub\Desktop\Repo\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\ref\OmniRiskAPI.dll
+>>>>>>> f0b90893d6522d6ee456062f883453661fcc121c

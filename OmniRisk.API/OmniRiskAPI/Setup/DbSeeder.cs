@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using OmniRiskAPI.Authentication;
-using OmniRiskAPI.Models;
 using OmniRiskAPI.Persistence;
 
 namespace OmniRiskAPI.Setup; 

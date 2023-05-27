@@ -1061,7 +1061,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.OpenApi/1.4.3": {
+      "Microsoft.OpenApi/1.6.4": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
@@ -1129,6 +1129,19 @@
           "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
             "assetType": "runtime",
             "rid": "win"
+          }
+        }
+      },
+      "MiniValidation/0.7.4": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MiniValidation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MiniValidation.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -3181,17 +3194,17 @@
         "runtime.json"
       ]
     },
-    "Microsoft.OpenApi/1.4.3": {
-      "sha512": "rURwggB+QZYcSVbDr7HSdhw/FELvMlriW10OeOzjPT7pstefMo7IThhtNtDudxbXhW+lj0NfX72Ka5EDsG8x6w==",
+    "Microsoft.OpenApi/1.6.4": {
+      "sha512": "NIfKy+en3LmBAsy0rO5kiuJzGsoTB1ywLJop8NS1PmJy8Gbq8Ut3HdOHUuF1/5KR3YCViOEfuYF1wBiitMRhcA==",
       "type": "package",
-      "path": "microsoft.openapi/1.4.3",
+      "path": "microsoft.openapi/1.6.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.OpenApi.dll",
         "lib/netstandard2.0/Microsoft.OpenApi.pdb",
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
-        "microsoft.openapi.1.4.3.nupkg.sha512",
+        "microsoft.openapi.1.6.4.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
     },
@@ -3283,6 +3296,22 @@
         "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.xml",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "MiniValidation/0.7.4": {
+      "sha512": "0n5/c1ZP8EheGwIqt8vp7gdoQBaT6zMpACltH6L8CAp4EpmHnjXLB8BD7BvPGv++EDj+sh7SxigP1TVgpap+Tg==",
+      "type": "package",
+      "path": "minivalidation/0.7.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/MiniValidation.dll",
+        "lib/net6.0/MiniValidation.xml",
+        "lib/netstandard2.0/MiniValidation.dll",
+        "lib/netstandard2.0/MiniValidation.xml",
+        "minivalidation.0.7.4.nupkg.sha512",
+        "minivalidation.nuspec"
       ]
     },
     "Mono.TextTemplating/2.2.1": {
@@ -4791,28 +4820,29 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.5",
+      "Microsoft.OpenApi >= 1.6.4",
+      "MiniValidation >= 0.7.4",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jakub\\.nuget\\packages\\": {},
+    "C:\\Users\\niezn\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jakub\\Desktop\\Repo\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
+      "projectUniqueName": "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
       "projectName": "OmniRiskAPI",
-      "projectPath": "C:\\Users\\jakub\\Desktop\\Repo\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
-      "packagesPath": "C:\\Users\\jakub\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jakub\\Desktop\\Repo\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\obj\\",
+      "projectPath": "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
+      "packagesPath": "C:\\Users\\niezn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\jakub\\Desktop\\Repo\\NuGet.Config",
-        "C:\\Users\\jakub\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\niezn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4876,6 +4906,14 @@
             "target": "Package",
             "version": "[7.0.5, )"
           },
+          "Microsoft.OpenApi": {
+            "target": "Package",
+            "version": "[1.6.4, )"
+          },
+          "MiniValidation": {
+            "target": "Package",
+            "version": "[0.7.4, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.4.0, )"
@@ -4903,5 +4941,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
