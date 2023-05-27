@@ -37,10 +37,10 @@ public static class EventsApi {
     }
     
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetEventResponse>>>> GetAll(
-        [FromServices] OmniRiskDbContext dbContext, bool acceptedOnly, CancellationToken ct) {
+        [FromServices] OmniRiskDbContext dbContext, bool? acceptedOnly, CancellationToken ct) {
         var eventsResponse = dbContext.Events
-            .Where(x => acceptedOnly ? x.IsAccepted : true)
-            .Select(x => new GetEventResponse(x.AuthorId, x.Author.UserName ?? "Deleted", x.Description))
+            .Where(x => acceptedOnly == true ? x.IsAccepted : true)
+            .Select(x => new GetEventResponse(x.Id, x.AuthorId, x.Author.UserName ?? "Unknown", x.Description, x.EventDate, x.EventType, x.EventStatus, x.Latitude, x.Longitude, x.Author))
             .AsEnumerable();
         return TypedResults.Ok(eventsResponse);
     }
