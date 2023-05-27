@@ -26,7 +26,7 @@ function PersistentDrawerRight() {
   const theme = useTheme();
   let isXL = useMediaQuery(theme.breakpoints.down("xl"));
 
-  let drawerWidth = isXL ? "32vw" : "24vw";
+  let drawerWidth = isXL ? "35vw" : "30vw";
 
   const handleDrawerClose = () => {
     appStore.setOpenDrawer(false);

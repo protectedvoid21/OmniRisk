@@ -9,6 +9,7 @@ import PersistentDrawerRight from "./ui/PersistentDrawerRight";
 import axios from "axios";
 import { useStore } from "../stores/store";
 import { getDistanceBetweenTwoPoints } from "../utils";
+import NewEventModal from "./NewEventModal";
 
 const OmniRisk = () => {
   const { appStore } = useStore();
@@ -28,14 +29,19 @@ const OmniRisk = () => {
           }
         );
       });
-      console.log(events);
       appStore.setEvents(events);
+    });
+
+    axios.get(`https://localhost:7287/Events/eventType`).then((response) => {
+      let events = response.data;
+      appStore.setEventTypes(events);
     });
   }, [appStore]);
 
   return (
     <>
       <Header />
+      <NewEventModal />
       <GlobalStyles
         styles={{
           body: { backgroundColor: theme.palette.background.default },

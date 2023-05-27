@@ -4,6 +4,7 @@ import { getDistanceBetweenTwoPoints } from "../utils";
 export default class AppStore {
   openDrawer = false;
   coordinates = [51.0656512, 17.032684];
+  newEventCoordinates = [];
   currentLocation = [51.0656512, 17.032684];
   coordinatesSet = false;
   addEventModalOpen = false;
@@ -11,15 +12,59 @@ export default class AppStore {
   sateliteView = false;
   addEventFlag = false;
   events = [];
+  eventStatuses = [];
+  eventTypes = [];
+  loading = false;
+  addEventBtnClicked = false;
 
   constructor() {
     makeAutoObservable(this);
   }
 
+  setAddEventModalOpen = (flag) => {
+    runInAction(() => {
+      this.addEventModalOpen = flag;
+    });
+    var element = document.getElementsByClassName("leaflet-container")[0];
+    element.classList.remove("cursor");
+  };
+
+  setNewEventCoordinates = (newCoordinates) => {
+    runInAction(() => {
+      this.newEventCoordinates = newCoordinates;
+    });
+  };
+
+  setAddEventBtnClicked = (flag) => {
+    runInAction(() => {
+      this.addEventBtnClicked = flag;
+    });
+  };
+
+  setLoading = (flag) => {
+    runInAction(() => {
+      this.loading = flag;
+    });
+  };
+
   setEvents = (events) => {
     runInAction(() => {
       this.events = events;
     });
+  };
+
+  setEventTypes = (eventTypes) => {
+    runInAction(() => {
+      this.eventTypes = eventTypes;
+    });
+  };
+
+  addEvent = (event) => {
+    runInAction(() => {
+      this.events.push(event);
+    });
+    var element = document.getElementsByClassName("leaflet-container")[0];
+    element.classList.remove("cursor");
   };
 
   setEventsDistance = (currentLocation) => {
@@ -73,12 +118,8 @@ export default class AppStore {
     runInAction(() => {
       this.eventModalOpen = flag;
     });
-  };
-
-  setAddEventModalOpen = (flag) => {
-    runInAction(() => {
-      this.addEventModalOpen = flag;
-    });
+    var element = document.getElementsByClassName("leaflet-container")[0];
+    element.classList.remove("cursor");
   };
 
   setCoordinates = (newCoordinates) => {
