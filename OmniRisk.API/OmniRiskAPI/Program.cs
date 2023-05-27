@@ -1,5 +1,6 @@
 using OmniRiskAPI.Api;
 using OmniRiskAPI.Authentication;
+using OmniRiskAPI.Authorization;
 using OmniRiskAPI.Persistence;
 using OmniRiskAPI.Setup;
 
@@ -12,7 +13,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultDb") ??
                        builder.Configuration.GetConnectionString("Test");
 builder.Services.AddSqlServer<OmniRiskDbContext>(connectionString);
 
-builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services.AddTokenService();
+builder.Services.AddCurrentUser();
 
 var app = builder.Build();
 

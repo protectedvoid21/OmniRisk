@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PS7UIFIBXCHxhihYCR9gVcXdaqlgWx0VCug9oARWNkD2YESNhV9KbLaXfRzNFiG5OBT0wXx4hjJY6XYZiIKa7A==",
+  "dgSpecHash": "JXxAu/CQ8YdyG/lH1Kujysq6i6SFD+in0sB+4SjJ6rQFRmki0K/UtuzY+zLU9big3uQqth1xF3Ak05yKQW6DMQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\niezn\\OneDrive\\Pulpit\\Programowanie\\Cshar\\OmniRisk\\OmniRisk.API\\OmniRiskAPI\\OmniRiskAPI.csproj",
   "expectedPackageFiles": [
@@ -49,6 +49,7 @@
     "C:\\Users\\niezn\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\niezn\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\niezn\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\niezn\\.nuget\\packages\\minivalidation\\0.7.4\\minivalidation.0.7.4.nupkg.sha512",
     "C:\\Users\\niezn\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\niezn\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\niezn\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
