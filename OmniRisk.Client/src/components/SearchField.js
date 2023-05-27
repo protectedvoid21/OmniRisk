@@ -16,7 +16,7 @@ const SearchField = ({ apiKey }) => {
     const searchControl = new SearchControl({
       provider: provider,
       style: "bar",
-      searchLabel: "Provide location...",
+      searchLabel: "Podaj miejscowość...",
       autoClose: true,
     });
 

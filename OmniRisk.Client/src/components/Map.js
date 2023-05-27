@@ -90,7 +90,7 @@ const DisplayPosition = observer(({ map }) => {
         zIndex: 9999999,
       }}
     >
-      Localize me
+      Zlokalizuj mnie
     </Button>
   );
 });
@@ -204,7 +204,7 @@ function Map() {
                 }}
               />
             }
-            label={<Typography variant="h3">Satellite</Typography>}
+            label={<Typography variant="h3">Satelita</Typography>}
           />
         </Control>
         <Control prepend position="topleft">
@@ -224,7 +224,7 @@ function Map() {
             }}
             sx={{ mt: 5, ml: 5, fontSize: 24 }}
           >
-            Add event
+            Dodaj zdarzenie
           </Button>
         </Control>
         {appStore.currentLocation && (

@@ -68,7 +68,7 @@ function PersistentDrawerRight() {
         </Box>
       </DrawerHeader>
       <Box textAlign="center">
-        <Typography variant="h3">EVENTS NEARBY</Typography>
+        <Typography variant="h3">Zdarzenia w pobliżu</Typography>
       </Box>
       <Grid
         container
