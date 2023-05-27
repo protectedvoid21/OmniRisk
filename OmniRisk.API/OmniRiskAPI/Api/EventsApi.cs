@@ -53,7 +53,7 @@ public static class EventsApi {
     }
 
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetEventStatusResponse>>>> GetAllEventsStatuses(
-        [FromServices] OmniRiskDbContext dbContext, bool? acceptedOnly, CancellationToken ct)
+        [FromServices] OmniRiskDbContext dbContext, CancellationToken ct)
     {
         var eventsResponse = dbContext.EventStatus
             .Select(x => new GetEventStatusResponse(x.Id, x.Name))
@@ -62,7 +62,7 @@ public static class EventsApi {
     }
 
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetEventTypeResponse>>>> GetAllEventsTypes(
-       [FromServices] OmniRiskDbContext dbContext, bool? acceptedOnly, CancellationToken ct)
+       [FromServices] OmniRiskDbContext dbContext, CancellationToken ct)
     {
         var eventsResponse = dbContext.EventStatus
             .Select(x => new GetEventTypeResponse(x.Id, x.Name))
@@ -71,7 +71,7 @@ public static class EventsApi {
     }
 
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetCrimeTypeResponse>>>> GetAllCrimeTypes(
-       [FromServices] OmniRiskDbContext dbContext, bool? acceptedOnly, CancellationToken ct)
+       [FromServices] OmniRiskDbContext dbContext, CancellationToken ct)
     {
         var eventsResponse = dbContext.EventStatus
             .Select(x => new GetCrimeTypeResponse(x.Id, x.Name))
