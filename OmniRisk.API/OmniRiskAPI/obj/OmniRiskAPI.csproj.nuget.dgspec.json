@@ -71,6 +71,10 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.6.4, )"
+            },
             "MiniValidation": {
               "target": "Package",
               "version": "[0.7.4, )"

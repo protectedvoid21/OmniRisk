@@ -14,7 +14,6 @@ public static class ValidationFiltersExtensions {
                 return;
             }
 
-            // Track the indicies of validatable parameters
             List<int>? parameterIndexesToValidate = null;
             foreach (var p in methodInfo.GetParameters()) {
                 if (typesToValidate.Contains(p.ParameterType)) {
@@ -23,12 +22,10 @@ public static class ValidationFiltersExtensions {
                 }
             }
 
-            if (parameterIndexesToValidate is null) {
-                // Nothing to validate so don't add the filter to this endpoint
+            if (parameterIndexesToValidate is null) { 
                 return;
             }
 
-            // We can respond with problem details if there's a validation error
             eb.Metadata.Add(new ProducesResponseTypeMetadata(typeof(HttpValidationProblemDetails), 400,
                 "application/problem+json"));
 
@@ -48,7 +45,6 @@ public static class ValidationFiltersExtensions {
         return builder;
     }
 
-    // Equivalent to the .Produces call to add metadata to endpoints
     private sealed class ProducesResponseTypeMetadata : IProducesResponseTypeMetadata {
         public ProducesResponseTypeMetadata(Type type, int statusCode, string contentType) {
             Type = type;

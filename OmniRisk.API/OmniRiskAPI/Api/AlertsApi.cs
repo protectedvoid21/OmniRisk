@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using OmniRiskAPI.Authorization;
 using OmniRiskAPI.Dtos;
 using OmniRiskAPI.Models;
 using OmniRiskAPI.Persistence;
 
-namespace OmniRiskAPI.Api; 
+namespace OmniRiskAPI.Api;
 
 public static class AlertsApi {
     public static RouteGroupBuilder MapAlerts(this IEndpointRouteBuilder routes) {
@@ -12,9 +13,11 @@ public static class AlertsApi {
         group.WithTags("alerts");
 
         group.MapGet("/", GetAll);
-        group.MapPost("/", Add);
         group.MapPut("/", Accept);
-        
+        group.MapPost("/", Add)
+            .RequireAuthorization(x => x.RequireCurrentUser())
+            .AddOpenApiSecurityRequirement();
+
         return group;
     }
 
@@ -32,7 +35,7 @@ public static class AlertsApi {
 
         return TypedResults.Ok(request);
     }
-    
+
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetAlertResponse>>>> GetAll(
         [FromServices] OmniRiskDbContext dbContext, CancellationToken ct) {
         var alertResponses = dbContext.Alerts
@@ -41,7 +44,7 @@ public static class AlertsApi {
             .AsEnumerable();
         return TypedResults.Ok(alertResponses);
     }
-    
+
     private static async Task<Results<BadRequest, Ok>> Accept(
         [FromServices] OmniRiskDbContext dbContext, [AsParameters] AcceptAlertRequest request, CancellationToken ct) {
         var alert = await dbContext.Alerts.FindAsync(request.AlertId);
@@ -56,7 +59,7 @@ public static class AlertsApi {
         else {
             dbContext.Remove(alert);
         }
-        
+
         await dbContext.SaveChangesAsync(ct);
         return TypedResults.Ok();
     }
