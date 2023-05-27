@@ -8,6 +8,7 @@ namespace OmniRiskAPI.Dtos
 
     public record GetEventResponse(int Id, Guid? AuthorId, string AuthorName, string? Description, DateTime? EventDate, EventType EventType, EventStatus EventStatus, float Latitude, float Longitude, AppUser Author);
     public record GetEventStatusResponse(int Id, string Name);
+    public record GetPersonsResponse(int Id, string FirstName, string Surname, byte[] Photo, string CurrentLocation);
     public record GetEventTypeResponse(int Id, string Name);
     public record GetCrimeTypeResponse(int Id, string Name);
 

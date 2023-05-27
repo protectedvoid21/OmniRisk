@@ -36,6 +36,11 @@ const OmniRisk = () => {
       let events = response.data;
       appStore.setEventTypes(events);
     });
+
+    axios.get(`https://localhost:7287/Events/persons`).then((response) => {
+      let persons = response.data;
+      appStore.setPersons(persons);
+    });
   }, [appStore]);
 
   return (

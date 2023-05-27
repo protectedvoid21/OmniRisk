@@ -179,3 +179,4 @@ C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRis
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\OmniRiskAPI.genruntimeconfig.cache
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\obj\Debug\net7.0\ref\OmniRiskAPI.dll
 C:\Users\niezn\OneDrive\Pulpit\Programowanie\Cshar\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\data.json
+C:\Users\jakub\Desktop\Repo\OmniRisk\OmniRisk.API\OmniRiskAPI\bin\Debug\net7.0\data.json

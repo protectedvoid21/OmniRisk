@@ -16,6 +16,7 @@ export default class AppStore {
   eventTypes = [];
   loading = false;
   addEventBtnClicked = false;
+  persons = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -27,6 +28,12 @@ export default class AppStore {
     });
     var element = document.getElementsByClassName("leaflet-container")[0];
     element.classList.remove("cursor");
+  };
+
+  setPersons = (persons) => {
+    runInAction(() => {
+      this.persons = persons;
+    });
   };
 
   setNewEventCoordinates = (newCoordinates) => {

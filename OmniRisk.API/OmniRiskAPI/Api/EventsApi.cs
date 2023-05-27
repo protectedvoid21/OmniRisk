@@ -5,6 +5,7 @@ using OmniRiskAPI.Authorization;
 using OmniRiskAPI.Dtos;
 using OmniRiskAPI.Models;
 using OmniRiskAPI.Persistence;
+using System.Text;
 
 namespace OmniRiskAPI.Api;
 
@@ -17,6 +18,7 @@ public static class EventsApi {
         group.MapGet("/eventStatus", GetAllEventsStatuses);
         group.MapGet("/eventType", GetAllEventsTypes);
         group.MapGet("/crimeType", GetAllCrimeTypes);
+        group.MapGet("/persons", GetAllPersons);
         group.MapPut("/", Accept);
         group.MapPost("/", Add);
             //.RequireAuthorization(x => x.RequireCurrentUser())
@@ -55,6 +57,15 @@ public static class EventsApi {
         var eventsResponse = dbContext.Events
             .Where(x => acceptedOnly == true ? x.IsAccepted : true)
             .Select(x => new GetEventResponse(x.Id, x.AuthorId, x.Author.UserName ?? "Unknown", x.Description, x.EventDate, x.EventType, x.EventStatus, x.Latitude, x.Longitude, x.Author))
+            .AsEnumerable();
+        return TypedResults.Ok(eventsResponse);
+    }
+
+    private static async Task<Results<BadRequest, Ok<IEnumerable<GetPersonsResponse>>>> GetAllPersons(
+        [FromServices] OmniRiskDbContext dbContext,  CancellationToken ct)
+    {
+        var eventsResponse = dbContext.Person
+            .Select(x => new GetPersonsResponse(x.Id, x.FirstName, x.Surname, Encoding.ASCII.GetBytes(x.PhotoUrl), x.CurrentLocation))
             .AsEnumerable();
         return TypedResults.Ok(eventsResponse);
     }

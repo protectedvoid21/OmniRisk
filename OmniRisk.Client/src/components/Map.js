@@ -259,6 +259,27 @@ function Map() {
               </Popup>
             </Marker>
           ))}
+
+          {appStore.persons.map((person, idx) => (
+            <Marker
+              title={"Osoba oskarżona o przestępstwo na tle seksualnym"}
+              key={`marker-${idx}`}
+              icon={defaultIcon}
+              // position={[event.latitude, event.longitude]}
+            >
+              <Popup>
+                <Grid
+                  container
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <span>{person.firstName}</span>
+                  <span>{person.surname}</span>
+                </Grid>
+              </Popup>
+            </Marker>
+          ))}
         </MarkerClusterGroup>
       </MapContainer>
     </div>
