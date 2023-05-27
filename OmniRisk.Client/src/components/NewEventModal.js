@@ -32,6 +32,7 @@ function NewEventModal() {
   const [loading, setLoading] = useState(false); ///TODO set false
   const [description, setDescription] = useState("");
   const [eventType, setEventType] = useState("");
+  const [eventDate, setEventDate] = useState("");
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -42,7 +43,7 @@ function NewEventModal() {
       latitude: appStore.newEventCoordinates.lat,
       longitude: appStore.newEventCoordinates.lng,
       description: description,
-      eventDate: "2023-05-27T02:29:25.943Z",
+      eventDate: eventDate,
     };
 
     console.log(model);
@@ -85,13 +86,14 @@ function NewEventModal() {
             id="date"
             label="Birthday"
             type="date"
-            defaultValue="2017-05-24"
+            value={eventDate}
             sx={{
               width: 200,
             }}
             InputLabelProps={{
               shrink: true,
             }}
+            onChange={(event) => setEventDate(event.target.value)}
           />
           <Box>
             <Typography variant="h3" align="left">
