@@ -6,45 +6,47 @@ using OmniRiskAPI.Persistence;
 namespace OmniRiskAPI.Setup {
     public class EventSeeder {
         public static async Task Seed(OmniRiskDbContext dbContext, UserManager<AppUser> userManager) {
-            var users = new List<AppUser>();
-            if (!userManager.Users.Any()) {
-                users = new List<AppUser> {
-                    new AppUser {
-                        UserName = "admin",
-                        Email = "admin@admin.com"
-                    },
-                    new AppUser {
-                        UserName = "user",
-                        Email = "user@user.com"
-                    },
-                    new AppUser {
-                        UserName = "jane",
-                        Email = "jane@test.com"
-                    },
-                    new AppUser {
-                        UserName = "tom",
-                        Email = "tom@test.com"
-                    },
-                    new AppUser {
-                        UserName = "mike",
-                        Email = "mike@test.com"
-                    },
-                };
+            //var users = new List<AppUser>();
+            //if (!userManager.Users.Any()) {
+            //    users = new List<AppUser> {
+            //        new AppUser {
+            //            UserName = "admin",
+            //            Email = "admin@admin.com"
+            //        },
+            //        new AppUser {
+            //            UserName = "user",
+            //            Email = "user@user.com"
+            //        },
+            //        new AppUser {
+            //            UserName = "jane",
+            //            Email = "jane@test.com"
+            //        },
+            //        new AppUser {
+            //            UserName = "tom",
+            //            Email = "tom@test.com"
+            //        },
+            //        new AppUser {
+            //            UserName = "mike",
+            //            Email = "mike@test.com"
+            //        },
+            //    };
 
-                var adminRole = new IdentityRole<Guid> { Name = "Admin", NormalizedName = "ADMIN" };
-                var userRole = new IdentityRole<Guid> { Name = "User", NormalizedName = "USER" };
+            //    var adminRole = new IdentityRole<Guid> { Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp= "SDAD" };
+            //    var userRole = new IdentityRole<Guid> { Name = "User", NormalizedName = "USER", ConcurrencyStamp = "SDasdAD" };
 
-                dbContext.Roles.AddRange(adminRole, userRole);
+            //    dbContext.Roles.AddRange(adminRole, userRole);
 
-                foreach (var user in users) {
-                    await userManager.CreateAsync(user, "Haslo1");
-                }
+            //    await dbContext.SaveChangesAsync();
 
-                await userManager.AddToRoleAsync(users[0], "ADMIN");
-                await userManager.AddToRoleAsync(users[1], "USER");
+            //    foreach (var user in users) {
+            //        await userManager.CreateAsync(user, "Haslo1");
+            //    }
 
-                await dbContext.SaveChangesAsync();
-            }
+            //    await userManager.AddToRoleAsync(users[0], "ADMIN");
+            //    await userManager.AddToRoleAsync(users[1], "USER");
+
+            //    await dbContext.SaveChangesAsync();
+            //}
 
             if (dbContext.Events.Any()) {
                 return;
@@ -85,7 +87,7 @@ namespace OmniRiskAPI.Setup {
 
             var @events = new[] {
                 new Event {
-                    Author = users[0],
+                    //Author = users[0],
                     Description = "Rozbicie szyb na przystanku",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -96,7 +98,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[1],
+                    //Author = users[1],
                     Description = "Obowiazuje od 29.05.2023 do 03.06.2023",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -107,7 +109,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = false,
                 },
                 new Event {
-                    Author = users[3],
+                    //Author = users[3],
                     Description = "Kradziez ze sklepu spozywczego, sprawcy ujeci",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -118,7 +120,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[2],
+                    //Author = users[2],
                     Description = "Bojki kiboli po meczu. Interweniowala policja.",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -129,7 +131,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[4],
+                    //Author = users[4],
                     Description = "Stluczka, tramwaj 16 - zmiana trasy przez Dworzec Glowny",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -140,7 +142,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[4],
+                    //Author = users[4],
                     Description = "",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -151,7 +153,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[3],
+                    //Author = users[3],
                     Description = "Wykolejenie pojazu szynowego",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -162,7 +164,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[1],
+                    //Author = users[1],
                     Description = "Znaleziono niewybuch 250kg",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -173,7 +175,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[1],
+                    //Author = users[1],
                     Description = "Zauwazono niedzwiedzia",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -184,7 +186,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[2],
+                    //Author = users[2],
                     Description = "",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
@@ -195,7 +197,7 @@ namespace OmniRiskAPI.Setup {
                     IsAccepted = true,
                 },
                 new Event {
-                    Author = users[4],
+                    //Author = users[4],
                     Description = "",
                     CreationDate = DateTime.Now,
                     EventDate = DateTime.Now,
