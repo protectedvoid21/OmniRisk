@@ -15,17 +15,17 @@ namespace OmniRiskAPI.Services
                 },
                 new TweetModel
                 {
-                    Content = "Jacek Sutryk nie wygra kolejnych wyborów",
+                    Content = "Jacek Sutryk nie wygra kolejnych wyborow",
                     Url = "www.yourmom.zip"
                 },
                 new TweetModel
                 {
-                    Content = "Z psychiatryka uciekł groźny pacjent",
+                    Content = "Z psychiatryka uciekl grozny pacjent",
                     Url = "www.yourmom.zip"
                 },
                 new TweetModel
                 {
-                    Content = "Niemcy zamierzają wprowadzić kolejne sankcje przeciwko Rosji",
+                    Content = "Niemcy zamierzaja wprowadzic kolejne sankcje przeciwko Rosji",
                     Url = "www.yourmom.zip"
                 }
             });
