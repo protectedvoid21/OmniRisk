@@ -25,12 +25,16 @@ public static class EventsApi {
         [FromServices] OmniRiskDbContext dbContext, [FromBody] AddEventRequest request, CancellationToken ct) {
         var @event = new Event {
             EventTypeId = request.EventTypeId,
+            EventStatusId = request.EventStatusId,
+            AuthorId = request.AuthorId,
+            EventDate = request.EventDate,
             Description = request.Description,
             Latitude = request.Latitude,
             Longitude = request.Longitude,
         };
 
-        dbContext.Add(@event);
+
+    dbContext.Add(@event);
         await dbContext.SaveChangesAsync(ct);
 
         return TypedResults.Ok(request);
