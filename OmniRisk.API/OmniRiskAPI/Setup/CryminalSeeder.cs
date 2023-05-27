@@ -7,20 +7,20 @@ using OmniRiskAPI.Persistence;
 namespace OmniRiskAPI.Setup {
     public class CryminalSeeder {
         public static async Task Seed(OmniRiskDbContext dbContext, UserManager<AppUser> userManager) {
-            var crimeType = new CrimeType { Id = 0, Name = "Pedofilia" };
+            var crimeType = new CrimeType { Name = "Pedofilia" };
             using StreamReader r = new StreamReader("data.json");
-            string json = r.ReadToEnd();
+            string json = await r.ReadToEndAsync();
             
             var persons = JsonConvert.DeserializeObject<List<Person>>(json);
 
             var cryminalists = new List<Cryminalist>();
             for (int i = 0; i < 50; i++) {
-                cryminalists.Add(new Cryminalist { Id = i, PersonId = i, CrimeTypeId = 0 });
+                cryminalists.Add(new Cryminalist { Person = persons[i], CrimeType = crimeType });
             }
 
             dbContext.AddRange(crimeType);
             dbContext.AddRange(persons);
-            dbContext.AddRange(@cryminalists);
+            dbContext.AddRange(cryminalists);
             await dbContext.SaveChangesAsync();
         }
     }
