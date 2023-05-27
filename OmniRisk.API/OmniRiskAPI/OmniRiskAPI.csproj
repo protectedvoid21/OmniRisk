@@ -17,8 +17,13 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+<<<<<<< HEAD
 
         <PackageReference Include="Standard.AI.OpenAI" Version="0.5.0" />
+=======
+        <PackageReference Include="Microsoft.OpenApi" Version="1.6.4" />
+        <PackageReference Include="MiniValidation" Version="0.7.4" />
+>>>>>>> 25d184dea064136e45371423d94c33da38ba1aaa
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

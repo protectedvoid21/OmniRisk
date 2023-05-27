@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using OmniRiskAPI.Authorization;
 using OmniRiskAPI.Dtos;
 using OmniRiskAPI.Models;
 using OmniRiskAPI.Persistence;
 
-namespace OmniRiskAPI.Api; 
+namespace OmniRiskAPI.Api;
 
 public static class EventsApi {
     public static RouteGroupBuilder MapEvents(this IEndpointRouteBuilder routes) {
@@ -12,9 +13,11 @@ public static class EventsApi {
         group.WithTags("events");
 
         group.MapGet("/", GetAll);
-        group.MapPost("/", Add);
         group.MapPut("/", Accept);
-        
+        group.MapPost("/", Add)
+            .RequireAuthorization(x => x.RequireCurrentUser())
+            .AddOpenApiSecurityRequirement();
+
         return group;
     }
 
@@ -34,14 +37,14 @@ public static class EventsApi {
     }
     
     private static async Task<Results<BadRequest, Ok<IEnumerable<GetEventResponse>>>> GetAll(
-        [FromServices] OmniRiskDbContext dbContext, bool acceptedOnly, CancellationToken ct) {
+        [FromServices] OmniRiskDbContext dbContext, bool? acceptedOnly, CancellationToken ct) {
         var eventsResponse = dbContext.Events
-            .Where(x => acceptedOnly ? x.IsAccepted : true)
-            .Select(x => new GetEventResponse(x.AuthorId, x.Author.UserName ?? "Deleted", x.Description))
+            .Where(x => acceptedOnly == true ? x.IsAccepted : true)
+            .Select(x => new GetEventResponse(x.Id, x.AuthorId, x.Author.UserName ?? "Unknown", x.Description, x.EventDate, x.EventType, x.EventStatus, x.Latitude, x.Longitude, x.Author))
             .AsEnumerable();
         return TypedResults.Ok(eventsResponse);
     }
-    
+
     private static async Task<Results<BadRequest, Ok>> Accept(
         [FromServices] OmniRiskDbContext dbContext, [AsParameters] AcceptEventRequest request, CancellationToken ct) {
         var @event = await dbContext.Events.FindAsync(request.EventId);
@@ -56,7 +59,7 @@ public static class EventsApi {
         else {
             dbContext.Remove(@event);
         }
-        
+
         await dbContext.SaveChangesAsync(ct);
         return TypedResults.Ok();
     }
