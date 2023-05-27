@@ -15,32 +15,38 @@ const OmniRisk = () => {
   const { appStore } = useStore();
 
   useEffect(() => {
-    axios.get(`https://localhost:7287/Events`).then((response) => {
-      let events = response.data;
-      events.forEach((event) => {
-        event.distanceFromCurrentLocation = getDistanceBetweenTwoPoints(
-          {
-            latitude: event.latitude,
-            longitude: event.longitude,
-          },
-          {
-            latitude: appStore.currentLocation[0],
-            longitude: appStore.currentLocation[1],
-          }
-        );
+    axios
+      .get(`https://omnirisk-back.azurewebsites.net/events`)
+      .then((response) => {
+        let events = response.data;
+        events.forEach((event) => {
+          event.distanceFromCurrentLocation = getDistanceBetweenTwoPoints(
+            {
+              latitude: event.latitude,
+              longitude: event.longitude,
+            },
+            {
+              latitude: appStore.currentLocation[0],
+              longitude: appStore.currentLocation[1],
+            }
+          );
+        });
+        appStore.setEvents(events);
       });
-      appStore.setEvents(events);
-    });
 
-    axios.get(`https://localhost:7287/Events/eventType`).then((response) => {
-      let events = response.data;
-      appStore.setEventTypes(events);
-    });
+    axios
+      .get(`https://omnirisk-back.azurewebsites.net/Events/eventType`)
+      .then((response) => {
+        let events = response.data;
+        appStore.setEventTypes(events);
+      });
 
-    axios.get(`https://localhost:7287/Events/persons`).then((response) => {
-      let persons = response.data;
-      appStore.setPersons(persons);
-    });
+    // axios
+    //   .get(`https://omnirisk-back.azurewebsites.net/Events/persons`)
+    //   .then((response) => {
+    //     let persons = response.data;
+    //     appStore.setPersons(persons);
+    //   });
   }, [appStore]);
 
   return (

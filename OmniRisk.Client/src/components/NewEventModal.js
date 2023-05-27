@@ -48,7 +48,7 @@ function NewEventModal() {
 
     console.log(model);
     await axios
-      .post(`https://localhost:7287/Events`, model)
+      .post(`https://omnirisk-back.azurewebsites.net/Events`, model)
       .then((response) => {
         console.log(response);
         setLoading(false);
