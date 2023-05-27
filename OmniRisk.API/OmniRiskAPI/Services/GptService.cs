@@ -16,7 +16,8 @@ namespace OmniRiskAPI.Services
 
             var openAIConfigurations = new OpenAIConfigurations
             {
-                ApiKey = "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",
+                ApiKey = "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",
+                OrganizationId = "org-NKMFPZug424fJBuErzc6OftV"
             };
 
             var openAIClient = new OpenAIClient(openAIConfigurations);

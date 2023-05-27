@@ -11,7 +11,7 @@ public static class DbSeeder {
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
 
         EventSeeder.Seed(dbContext, userManager).Wait(); 
-
+        CryminalSeeder.Seed(dbContext, userManager).Wait();
         return webApplication;
     }
 }
