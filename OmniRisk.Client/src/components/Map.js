@@ -90,7 +90,7 @@ const DisplayPosition = observer(({ map }) => {
         zIndex: 9999999,
       }}
     >
-      Localize me
+      Zlokalizuj mnie
     </Button>
   );
 });
@@ -136,27 +136,33 @@ function Map() {
 
     useMapEvents({
       click: (e) => {
-        const baseUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2`;
-        try {
-          axios
-            .get(`${baseUrl}`, {
-              params: {
-                lat: e.latlng.lat,
-                lon: e.latlng.lng,
-                zoom: 18,
-                addressdetails: 1,
-              },
-            })
-            .then((response) => {
-              let city =
-                response.data.address.city ?? response.data.address.village;
-              let road = response.data.address.road;
-              let country = response.data.address.country;
-              let postCode = response.data.address.postcode;
-              console.log(response);
-            });
-        } catch (error) {
-          console.log(error);
+        if (appStore.addEventBtnClicked) {
+          const baseUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2`;
+          console.log("first");
+          try {
+            axios
+              .get(`${baseUrl}`, {
+                params: {
+                  lat: e.latlng.lat,
+                  lon: e.latlng.lng,
+                  zoom: 18,
+                  addressdetails: 1,
+                },
+              })
+              .then((response) => {
+                let city =
+                  response.data.address.city ?? response.data.address.village;
+                let road = response.data.address.road;
+                let country = response.data.address.country;
+                let postCode = response.data.address.postcode;
+                setPosition(e.latlng); // 👈 add marker
+                appStore.setNewEventCoordinates(e.latlng);
+                appStore.setAddEventFlag(false);
+                appStore.setAddEventModalOpen(true);
+              });
+          } catch (error) {
+            console.log(error);
+          }
         }
       },
     });
@@ -164,7 +170,7 @@ function Map() {
     return position === null ? (
       position
     ) : (
-      <Marker draggable={true} position={position}></Marker>
+      <Marker icon={defaultIcon} draggable={true} position={position}></Marker>
     );
   };
 
@@ -184,6 +190,7 @@ function Map() {
           url={appStore.sateliteView ? sateliteMapUrl : mapUrl}
           subdomains={["mt1", "mt2", "mt3"]}
         />
+        <AddMarker />
         <ZoomControl position={"bottomleft"} />
         {searchBarEnabled && <SearchField />}
         <Control>
@@ -197,13 +204,13 @@ function Map() {
                 }}
               />
             }
-            label={<Typography variant="h3">Satellite</Typography>}
+            label={<Typography variant="h3">Satelita</Typography>}
           />
         </Control>
         <Control prepend position="topleft">
           <Button
             variant="contained"
-            disabled={appStore.addCourtFlag}
+            disabled={appStore.addEventFlag}
             size="large"
             color="primary"
             onClick={(e) => {
@@ -213,10 +220,11 @@ function Map() {
               var element =
                 document.getElementsByClassName("leaflet-container")[0];
               element.classList.add("cursor");
+              appStore.setAddEventBtnClicked(true);
             }}
             sx={{ mt: 5, ml: 5, fontSize: 24 }}
           >
-            Add event
+            Dodaj zdarzenie
           </Button>
         </Control>
         {appStore.currentLocation && (
@@ -226,7 +234,6 @@ function Map() {
             </Popup>
           </Marker>
         )}
-        {appStore.addEventFlag && <AddMarker />}
         <MarkerClusterGroup chunkedLoading>
           {appStore.events.map((event, idx) => (
             <Marker

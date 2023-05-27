@@ -26,7 +26,7 @@ function PersistentDrawerRight() {
   const theme = useTheme();
   let isXL = useMediaQuery(theme.breakpoints.down("xl"));
 
-  let drawerWidth = isXL ? "32vw" : "24vw";
+  let drawerWidth = isXL ? "35vw" : "30vw";
 
   const handleDrawerClose = () => {
     appStore.setOpenDrawer(false);
@@ -68,7 +68,7 @@ function PersistentDrawerRight() {
         </Box>
       </DrawerHeader>
       <Box textAlign="center">
-        <Typography variant="h3">EVENTS NEARBY</Typography>
+        <Typography variant="h3">Zdarzenia w pobliżu</Typography>
       </Box>
       <Grid
         container

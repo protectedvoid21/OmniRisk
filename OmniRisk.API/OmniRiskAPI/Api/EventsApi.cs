@@ -29,7 +29,7 @@ public static class EventsApi {
         [FromServices] OmniRiskDbContext dbContext, [FromBody] AddEventRequest request, CancellationToken ct) {
         var @event = new Event {
             EventTypeId = request.EventTypeId,
-            EventStatusId = request.EventStatusId,
+            EventStatusId = 1,
             AuthorId = request.AuthorId,
             EventDate = request.EventDate,
             Description = request.Description,
