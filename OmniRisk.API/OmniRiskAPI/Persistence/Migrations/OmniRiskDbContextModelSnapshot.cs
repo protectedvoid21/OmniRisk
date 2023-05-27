@@ -219,42 +219,7 @@ namespace OmniRiskAPI.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("OmniRiskAPI.Models.Alert", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AlertTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("AuthorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAccepted")
-                        .HasColumnType("bit");
-
-                    b.Property<float>("Latitude")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Longitude")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AlertTypeId");
-
-                    b.HasIndex("AuthorId");
-
-                    b.ToTable("Alerts");
-                });
-
-            modelBuilder.Entity("OmniRiskAPI.Models.AlertType", b =>
+            modelBuilder.Entity("OmniRiskAPI.Models.CrimeType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -268,7 +233,140 @@ namespace OmniRiskAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AlertTypes");
+                    b.ToTable("CrimeTypes");
+                });
+
+            modelBuilder.Entity("OmniRiskAPI.Models.Cryminalist", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CrimeTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CrimeTypeId");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("Cryminalists");
+                });
+
+            modelBuilder.Entity("OmniRiskAPI.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid?>("AuthorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EventDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EventTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("Latitude")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Longitude")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("EventStatusId");
+
+                    b.HasIndex("EventTypeId");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("OmniRiskAPI.Models.EventStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventStatus");
+                });
+
+            modelBuilder.Entity("OmniRiskAPI.Models.EventType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventType");
+                });
+
+            modelBuilder.Entity("OmniRiskAPI.Models.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CurrentLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Person");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -322,21 +420,48 @@ namespace OmniRiskAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OmniRiskAPI.Models.Alert", b =>
+            modelBuilder.Entity("OmniRiskAPI.Models.Cryminalist", b =>
                 {
-                    b.HasOne("OmniRiskAPI.Models.AlertType", "AlertType")
+                    b.HasOne("OmniRiskAPI.Models.CrimeType", "CrimeType")
                         .WithMany()
-                        .HasForeignKey("AlertTypeId")
+                        .HasForeignKey("CrimeTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OmniRiskAPI.Models.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CrimeType");
+
+                    b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("OmniRiskAPI.Models.Event", b =>
+                {
                     b.HasOne("OmniRiskAPI.Authentication.AppUser", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId");
 
-                    b.Navigation("AlertType");
+                    b.HasOne("OmniRiskAPI.Models.EventStatus", "EventStatus")
+                        .WithMany()
+                        .HasForeignKey("EventStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OmniRiskAPI.Models.EventType", "EventType")
+                        .WithMany()
+                        .HasForeignKey("EventTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Author");
+
+                    b.Navigation("EventStatus");
+
+                    b.Navigation("EventType");
                 });
 #pragma warning restore 612, 618
         }
